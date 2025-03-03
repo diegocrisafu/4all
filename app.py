@@ -2,13 +2,13 @@ from flask import Flask, render_template, request, redirect, url_for, session
 from gpt4all import GPT4All
 
 app = Flask(__name__)
-app.secret_key = "your_secret_key_here"  # Replace with a secure key
+app.secret_key = "Bella2001%.."  # Replace with a secure key
 
-# Load the GPT4All model (ensure the model file is in your repo)
+# Load the GPT4All model (ensure the model file is in your repo or correct path)
 model = GPT4All("Meta-Llama-3-8B-Instruct.Q4_0.gguf")
 
-# Open a persistent chat session
-chat_session = model.chat_session()
+# Open a persistent chat session by manually entering the context
+chat_session = model.chat_session().__enter__()
 
 # Preload a system prompt to instruct the model to answer like Donald Trump
 system_prompt = (
