@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Trump Chatbot</title>
+  <style>
+    body { font-family: Arial, sans-serif; background-color: #f2f2f2; margin: 0; padding: 0; }
+    .container { max-width: 800px; margin: auto; background-color: #fff; padding: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    .chat-box { height: 500px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; background-color: #fafafa; }
+    .message { margin-bottom: 15px; }
+    .user { text-align: right; }
+    .trump { text-align: left; color: blue; }
+    .sender { font-weight: bold; }
+    .input-area { margin-top: 20px; }
+    input[type="text"] { width: 80%; padding: 10px; }
+    input[type="submit"] { padding: 10px 20px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Donald Trump Chatbot</h1>
+    <div class="chat-box">
+      {% for chat in chat_history %}
+        <div class="message {% if chat.sender == 'User' %}user{% else %}trump{% endif %}">
+          <span class="sender">{{ chat.sender }}:</span> {{ chat.message }}
+        </div>
+      {% endfor %}
+    </div>
+    <div class="input-area">
+      <form method="post">
+        <input type="text" name="message" placeholder="Enter your message here..." required>
+        <input type="submit" value="Send">
+      </form>
+    </div>
+  </div>
+</body>
+</html>
